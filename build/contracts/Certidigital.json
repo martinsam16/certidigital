@@ -1,0 +1,1751 @@
+{
+  "contractName": "Certidigital",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "emisor",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "tituloCertificado",
+              "type": "string"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct Certidigital.Certificado",
+          "name": "_certificado",
+          "type": "tuple"
+        }
+      ],
+      "name": "Certificar",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "receptor",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "tituloCertificado",
+          "type": "string"
+        }
+      ],
+      "name": "crearCertificado",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "direccion",
+          "type": "address"
+        }
+      ],
+      "name": "getCertificado",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "emisor",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "tituloCertificado",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct Certidigital.Certificado",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"address\",\"name\":\"emisor\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"tituloCertificado\",\"type\":\"string\"}],\"indexed\":false,\"internalType\":\"struct Certidigital.Certificado\",\"name\":\"_certificado\",\"type\":\"tuple\"}],\"name\":\"Certificar\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"receptor\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"tituloCertificado\",\"type\":\"string\"}],\"name\":\"crearCertificado\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"direccion\",\"type\":\"address\"}],\"name\":\"getCertificado\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"emisor\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"tituloCertificado\",\"type\":\"string\"}],\"internalType\":\"struct Certidigital.Certificado\",\"name\":\"\",\"type\":\"tuple\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/D/GitHub/LearningSolidity/contracts/Certidigital.sol\":\"Certidigital\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/GitHub/LearningSolidity/contracts/Certidigital.sol\":{\"keccak256\":\"0x4b6a749dea40af317ed39644e3b66a38c5c2ef706fb46fdb4b24d8e6dd417e0a\",\"urls\":[\"bzz-raw://68e4d386ac1faa00b9878ab6ecda5e221315a5cf87e761802e290cf8011cd8dd\",\"dweb:/ipfs/QmTE3ifRwyBcfNRZxBVgsCvRkHFRRdNMF4qAVbTGvfRfdV\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506106d2806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80635b08e4a81461003b578063a8546ff314610057575b600080fd5b61005560048036036100509190810190610483565b610087565b005b610071600480360361006c919081019061045a565b6101cc565b60405161007e919061055c565b60405180910390f35b61008f61031c565b60405180604001604052803373ffffffffffffffffffffffffffffffffffffffff168152602001838152509050806000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008201518160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550602082015181600101908051906020019061015e92919061034c565b509050508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fb2397f325b5267fe02afdfef719b593276b295c087fbc525860227b738ca8ffd836040516101bf919061055c565b60405180910390a3505050565b6101d461031c565b6000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206040518060400160405290816000820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001600182018054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561030c5780601f106102e15761010080835404028352916020019161030c565b820191906000526020600020905b8154815290600101906020018083116102ef57829003601f168201915b5050505050815250509050919050565b6040518060400160405280600073ffffffffffffffffffffffffffffffffffffffff168152602001606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061038d57805160ff19168380011785556103bb565b828001600101855582156103bb579182015b828111156103ba57825182559160200191906001019061039f565b5b5090506103c891906103cc565b5090565b6103ee91905b808211156103ea5760008160009055506001016103d2565b5090565b90565b60008135905061040081610678565b92915050565b600082601f83011261041757600080fd5b813561042a610425826105ab565b61057e565b9150808252602083016020830185838301111561044657600080fd5b610451838284610625565b50505092915050565b60006020828403121561046c57600080fd5b600061047a848285016103f1565b91505092915050565b6000806040838503121561049657600080fd5b60006104a4858286016103f1565b925050602083013567ffffffffffffffff8111156104c157600080fd5b6104cd85828601610406565b9150509250929050565b6104e0816105f3565b82525050565b60006104f1826105d7565b6104fb81856105e2565b935061050b818560208601610634565b61051481610667565b840191505092915050565b600060408301600083015161053760008601826104d7565b506020830151848203602086015261054f82826104e6565b9150508091505092915050565b60006020820190508181036000830152610576818461051f565b905092915050565b6000604051905081810181811067ffffffffffffffff821117156105a157600080fd5b8060405250919050565b600067ffffffffffffffff8211156105c257600080fd5b601f19601f8301169050602081019050919050565b600081519050919050565b600082825260208201905092915050565b60006105fe82610605565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b82818337600083830152505050565b60005b83811015610652578082015181840152602081019050610637565b83811115610661576000848401525b50505050565b6000601f19601f8301169050919050565b610681816105f3565b811461068c57600080fd5b5056fea365627a7a723158209bdc63a8e98e00446457093aee08ad75ceeca09c6d884f75b0c067a0fd42c1a56c6578706572696d656e74616cf564736f6c63430005100040",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80635b08e4a81461003b578063a8546ff314610057575b600080fd5b61005560048036036100509190810190610483565b610087565b005b610071600480360361006c919081019061045a565b6101cc565b60405161007e919061055c565b60405180910390f35b61008f61031c565b60405180604001604052803373ffffffffffffffffffffffffffffffffffffffff168152602001838152509050806000808573ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060008201518160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550602082015181600101908051906020019061015e92919061034c565b509050508273ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff167fb2397f325b5267fe02afdfef719b593276b295c087fbc525860227b738ca8ffd836040516101bf919061055c565b60405180910390a3505050565b6101d461031c565b6000808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000206040518060400160405290816000820160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001600182018054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561030c5780601f106102e15761010080835404028352916020019161030c565b820191906000526020600020905b8154815290600101906020018083116102ef57829003601f168201915b5050505050815250509050919050565b6040518060400160405280600073ffffffffffffffffffffffffffffffffffffffff168152602001606081525090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061038d57805160ff19168380011785556103bb565b828001600101855582156103bb579182015b828111156103ba57825182559160200191906001019061039f565b5b5090506103c891906103cc565b5090565b6103ee91905b808211156103ea5760008160009055506001016103d2565b5090565b90565b60008135905061040081610678565b92915050565b600082601f83011261041757600080fd5b813561042a610425826105ab565b61057e565b9150808252602083016020830185838301111561044657600080fd5b610451838284610625565b50505092915050565b60006020828403121561046c57600080fd5b600061047a848285016103f1565b91505092915050565b6000806040838503121561049657600080fd5b60006104a4858286016103f1565b925050602083013567ffffffffffffffff8111156104c157600080fd5b6104cd85828601610406565b9150509250929050565b6104e0816105f3565b82525050565b60006104f1826105d7565b6104fb81856105e2565b935061050b818560208601610634565b61051481610667565b840191505092915050565b600060408301600083015161053760008601826104d7565b506020830151848203602086015261054f82826104e6565b9150508091505092915050565b60006020820190508181036000830152610576818461051f565b905092915050565b6000604051905081810181811067ffffffffffffffff821117156105a157600080fd5b8060405250919050565b600067ffffffffffffffff8211156105c257600080fd5b601f19601f8301169050602081019050919050565b600081519050919050565b600082825260208201905092915050565b60006105fe82610605565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b82818337600083830152505050565b60005b83811015610652578082015181840152602081019050610637565b83811115610661576000848401525b50505050565b6000601f19601f8301169050919050565b610681816105f3565b811461068c57600080fd5b5056fea365627a7a723158209bdc63a8e98e00446457093aee08ad75ceeca09c6d884f75b0c067a0fd42c1a56c6578706572696d656e74616cf564736f6c63430005100040",
+  "sourceMap": "106:705:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;106:705:0;;;;;;;",
+  "deployedSourceMap": "106:705:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;106:705:0;;;;;;;;;;;;;;;;;;;;;;;;380:286;;;;;;;;;;;;;;;;:::i;:::-;;674:132;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;380:286;475:30;;:::i;:::-;508:42;;;;;;;;520:10;508:42;;;;;;532:17;508:42;;;475:75;;586:11;561:12;:22;574:8;561:22;;;;;;;;;;;;;;;:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;636:8;613:45;;624:10;613:45;;;646:11;613:45;;;;;;;;;;;;;;;380:286;;;:::o;674:132::-;738:18;;:::i;:::-;775:12;:23;788:9;775:23;;;;;;;;;;;;;;;768:30;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;674:132;;;:::o;106:705::-;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;5:130:-1:-;;85:6;72:20;63:29;;97:33;124:5;97:33;;;57:78;;;;;143:442;;245:3;238:4;230:6;226:17;222:27;212:2;;263:1;260;253:12;212:2;300:6;287:20;322:65;337:49;379:6;337:49;;;322:65;;;313:74;;407:6;400:5;393:21;443:4;435:6;431:17;476:4;469:5;465:16;511:3;502:6;497:3;493:16;490:25;487:2;;;528:1;525;518:12;487:2;538:41;572:6;567:3;562;538:41;;;205:380;;;;;;;;593:241;;697:2;685:9;676:7;672:23;668:32;665:2;;;713:1;710;703:12;665:2;748:1;765:53;810:7;801:6;790:9;786:22;765:53;;;755:63;;727:97;659:175;;;;;841:472;;;972:2;960:9;951:7;947:23;943:32;940:2;;;988:1;985;978:12;940:2;1023:1;1040:53;1085:7;1076:6;1065:9;1061:22;1040:53;;;1030:63;;1002:97;1158:2;1147:9;1143:18;1130:32;1182:18;1174:6;1171:30;1168:2;;;1214:1;1211;1204:12;1168:2;1234:63;1289:7;1280:6;1269:9;1265:22;1234:63;;;1224:73;;1109:194;934:379;;;;;;1320:103;1393:24;1411:5;1393:24;;;1388:3;1381:37;1375:48;;;1430:319;;1528:35;1557:5;1528:35;;;1575:61;1629:6;1624:3;1575:61;;;1568:68;;1641:52;1686:6;1681:3;1674:4;1667:5;1663:16;1641:52;;;1714:29;1736:6;1714:29;;;1709:3;1705:39;1698:46;;1508:241;;;;;;1829:584;;1982:4;1977:3;1973:14;2067:4;2060:5;2056:16;2050:23;2079:63;2136:4;2131:3;2127:14;2113:12;2079:63;;;2002:146;2234:4;2227:5;2223:16;2217:23;2286:3;2280:4;2276:14;2269:4;2264:3;2260:14;2253:38;2306:69;2370:4;2356:12;2306:69;;;2298:77;;2158:229;2404:4;2397:11;;1955:458;;;;;;2420:365;;2590:2;2579:9;2575:18;2567:26;;2640:9;2634:4;2630:20;2626:1;2615:9;2611:17;2604:47;2665:110;2770:4;2761:6;2665:110;;;2657:118;;2561:224;;;;;2792:256;;2854:2;2848:9;2838:19;;2892:4;2884:6;2880:17;2991:6;2979:10;2976:22;2955:18;2943:10;2940:34;2937:62;2934:2;;;3012:1;3009;3002:12;2934:2;3032:10;3028:2;3021:22;2832:216;;;;;3055:322;;3199:18;3191:6;3188:30;3185:2;;;3231:1;3228;3221:12;3185:2;3298:4;3294:9;3287:4;3279:6;3275:17;3271:33;3263:41;;3362:4;3356;3352:15;3344:23;;3122:255;;;;3384:118;;3474:5;3468:12;3458:22;;3439:63;;;;3510:153;;3615:6;3610:3;3603:19;3652:4;3647:3;3643:14;3628:29;;3596:67;;;;;3671:91;;3733:24;3751:5;3733:24;;;3722:35;;3716:46;;;;3769:121;;3842:42;3835:5;3831:54;3820:65;;3814:76;;;;3898:145;3979:6;3974:3;3969;3956:30;4035:1;4026:6;4021:3;4017:16;4010:27;3949:94;;;;4052:268;4117:1;4124:101;4138:6;4135:1;4132:13;4124:101;;;4214:1;4209:3;4205:11;4199:18;4195:1;4190:3;4186:11;4179:39;4160:2;4157:1;4153:10;4148:15;;4124:101;;;4240:6;4237:1;4234:13;4231:2;;;4305:1;4296:6;4291:3;4287:16;4280:27;4231:2;4101:219;;;;;4328:97;;4416:2;4412:7;4407:2;4400:5;4396:14;4392:28;4382:38;;4376:49;;;;4433:117;4502:24;4520:5;4502:24;;;4495:5;4492:35;4482:2;;4541:1;4538;4531:12;4482:2;4476:74;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity >=0.4.22 <0.9.0;\r\npragma experimental ABIEncoderV2;\r\n\r\n\r\ncontract Certidigital {\r\n\r\n    struct Certificado {\r\n        address emisor;\r\n        string tituloCertificado;\r\n    }\r\n\r\n    mapping(address => Certificado) certificados;\r\n\r\n    event Certificar(address indexed _from, address indexed _to, Certificado _certificado);\r\n\r\n    function crearCertificado(address receptor, string memory tituloCertificado) public {\r\n        Certificado memory certificado = Certificado(msg.sender, tituloCertificado);\r\n        certificados[receptor] = certificado;\r\n        emit Certificar(msg.sender, receptor, certificado);\r\n    }\r\n\r\n    function getCertificado(address direccion) public view returns (Certificado memory){\r\n        return certificados[direccion];\r\n    }\r\n\r\n}\r\n",
+  "sourcePath": "D:/GitHub/LearningSolidity/contracts/Certidigital.sol",
+  "ast": {
+    "absolutePath": "/D/GitHub/LearningSolidity/contracts/Certidigital.sol",
+    "exportedSymbols": {
+      "Certidigital": [
+        61
+      ]
+    },
+    "id": 62,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:32:0"
+      },
+      {
+        "id": 2,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "67:33:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 61,
+        "linearizedBaseContracts": [
+          61
+        ],
+        "name": "Certidigital",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Certidigital.Certificado",
+            "id": 7,
+            "members": [
+              {
+                "constant": false,
+                "id": 4,
+                "name": "emisor",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "167:14:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "167:7:0",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 6,
+                "name": "tituloCertificado",
+                "nodeType": "VariableDeclaration",
+                "scope": 7,
+                "src": "192:24:0",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 5,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "192:6:0",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Certificado",
+            "nodeType": "StructDefinition",
+            "scope": 61,
+            "src": "137:87:0",
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 11,
+            "name": "certificados",
+            "nodeType": "VariableDeclaration",
+            "scope": 61,
+            "src": "232:44:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Certificado_$7_storage_$",
+              "typeString": "mapping(address => struct Certidigital.Certificado)"
+            },
+            "typeName": {
+              "id": 10,
+              "keyType": {
+                "id": 8,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "240:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "232:31:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Certificado_$7_storage_$",
+                "typeString": "mapping(address => struct Certidigital.Certificado)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 9,
+                "name": "Certificado",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 7,
+                "src": "251:11:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Certificado_$7_storage_ptr",
+                  "typeString": "struct Certidigital.Certificado"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 19,
+            "name": "Certificar",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 13,
+                  "indexed": true,
+                  "name": "_from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 19,
+                  "src": "302:21:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 12,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "302:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 15,
+                  "indexed": true,
+                  "name": "_to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 19,
+                  "src": "325:19:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 14,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "325:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17,
+                  "indexed": false,
+                  "name": "_certificado",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 19,
+                  "src": "346:24:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Certificado_$7_memory_ptr",
+                    "typeString": "struct Certidigital.Certificado"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 16,
+                    "name": "Certificado",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7,
+                    "src": "346:11:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Certificado_$7_storage_ptr",
+                      "typeString": "struct Certidigital.Certificado"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "301:70:0"
+            },
+            "src": "285:87:0"
+          },
+          {
+            "body": {
+              "id": 47,
+              "nodeType": "Block",
+              "src": "464:202:0",
+              "statements": [
+                {
+                  "assignments": [
+                    27
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 27,
+                      "name": "certificado",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 47,
+                      "src": "475:30:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Certificado_$7_memory_ptr",
+                        "typeString": "struct Certidigital.Certificado"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 26,
+                        "name": "Certificado",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 7,
+                        "src": "475:11:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Certificado_$7_storage_ptr",
+                          "typeString": "struct Certidigital.Certificado"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 33,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 29,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 109,
+                          "src": "520:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 30,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "520:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 31,
+                        "name": "tituloCertificado",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 23,
+                        "src": "532:17:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_string_memory_ptr",
+                          "typeString": "string memory"
+                        }
+                      ],
+                      "id": 28,
+                      "name": "Certificado",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7,
+                      "src": "508:11:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_Certificado_$7_storage_ptr_$",
+                        "typeString": "type(struct Certidigital.Certificado storage pointer)"
+                      }
+                    },
+                    "id": 32,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "508:42:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Certificado_$7_memory",
+                      "typeString": "struct Certidigital.Certificado memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "475:75:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 38,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 34,
+                        "name": "certificados",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 11,
+                        "src": "561:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Certificado_$7_storage_$",
+                          "typeString": "mapping(address => struct Certidigital.Certificado storage ref)"
+                        }
+                      },
+                      "id": 36,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 35,
+                        "name": "receptor",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 21,
+                        "src": "574:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "561:22:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Certificado_$7_storage",
+                        "typeString": "struct Certidigital.Certificado storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 37,
+                      "name": "certificado",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 27,
+                      "src": "586:11:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Certificado_$7_memory_ptr",
+                        "typeString": "struct Certidigital.Certificado memory"
+                      }
+                    },
+                    "src": "561:36:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Certificado_$7_storage",
+                      "typeString": "struct Certidigital.Certificado storage ref"
+                    }
+                  },
+                  "id": 39,
+                  "nodeType": "ExpressionStatement",
+                  "src": "561:36:0"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 41,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 109,
+                          "src": "624:3:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 42,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "624:10:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 43,
+                        "name": "receptor",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 21,
+                        "src": "636:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 44,
+                        "name": "certificado",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 27,
+                        "src": "646:11:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Certificado_$7_memory_ptr",
+                          "typeString": "struct Certidigital.Certificado memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_struct$_Certificado_$7_memory_ptr",
+                          "typeString": "struct Certidigital.Certificado memory"
+                        }
+                      ],
+                      "id": 40,
+                      "name": "Certificar",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 19,
+                      "src": "613:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_struct$_Certificado_$7_memory_ptr_$returns$__$",
+                        "typeString": "function (address,address,struct Certidigital.Certificado memory)"
+                      }
+                    },
+                    "id": 45,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "613:45:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 46,
+                  "nodeType": "EmitStatement",
+                  "src": "608:50:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 48,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "crearCertificado",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 24,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 21,
+                  "name": "receptor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 48,
+                  "src": "406:16:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 20,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "406:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 23,
+                  "name": "tituloCertificado",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 48,
+                  "src": "424:31:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 22,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "424:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "405:51:0"
+            },
+            "returnParameters": {
+              "id": 25,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "464:0:0"
+            },
+            "scope": 61,
+            "src": "380:286:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 59,
+              "nodeType": "Block",
+              "src": "757:49:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 55,
+                      "name": "certificados",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 11,
+                      "src": "775:12:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_struct$_Certificado_$7_storage_$",
+                        "typeString": "mapping(address => struct Certidigital.Certificado storage ref)"
+                      }
+                    },
+                    "id": 57,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 56,
+                      "name": "direccion",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 50,
+                      "src": "788:9:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "775:23:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Certificado_$7_storage",
+                      "typeString": "struct Certidigital.Certificado storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 54,
+                  "id": 58,
+                  "nodeType": "Return",
+                  "src": "768:30:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 60,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getCertificado",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 51,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 50,
+                  "name": "direccion",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60,
+                  "src": "698:17:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 49,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "698:7:0",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "697:19:0"
+            },
+            "returnParameters": {
+              "id": 54,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 53,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 60,
+                  "src": "738:18:0",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Certificado_$7_memory_ptr",
+                    "typeString": "struct Certidigital.Certificado"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 52,
+                    "name": "Certificado",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 7,
+                    "src": "738:11:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Certificado_$7_storage_ptr",
+                      "typeString": "struct Certidigital.Certificado"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "737:20:0"
+            },
+            "scope": 61,
+            "src": "674:132:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 62,
+        "src": "106:705:0"
+      }
+    ],
+    "src": "33:780:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/D/GitHub/LearningSolidity/contracts/Certidigital.sol",
+      "exportedSymbols": {
+        "Certidigital": [
+          61
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.4",
+            ".22",
+            "<",
+            "0.9",
+            ".0"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "33:32:0"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 2,
+        "name": "PragmaDirective",
+        "src": "67:33:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            61
+          ],
+          "name": "Certidigital",
+          "scope": 62
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "Certidigital.Certificado",
+              "name": "Certificado",
+              "scope": 61,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "emisor",
+                  "scope": 7,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "nonpayable",
+                      "type": "address"
+                    },
+                    "id": 3,
+                    "name": "ElementaryTypeName",
+                    "src": "167:7:0"
+                  }
+                ],
+                "id": 4,
+                "name": "VariableDeclaration",
+                "src": "167:14:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "tituloCertificado",
+                  "scope": 7,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 5,
+                    "name": "ElementaryTypeName",
+                    "src": "192:6:0"
+                  }
+                ],
+                "id": 6,
+                "name": "VariableDeclaration",
+                "src": "192:24:0"
+              }
+            ],
+            "id": 7,
+            "name": "StructDefinition",
+            "src": "137:87:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "certificados",
+              "scope": 61,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(address => struct Certidigital.Certificado)",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(address => struct Certidigital.Certificado)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 8,
+                    "name": "ElementaryTypeName",
+                    "src": "240:7:0"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "Certificado",
+                      "referencedDeclaration": 7,
+                      "type": "struct Certidigital.Certificado"
+                    },
+                    "id": 9,
+                    "name": "UserDefinedTypeName",
+                    "src": "251:11:0"
+                  }
+                ],
+                "id": 10,
+                "name": "Mapping",
+                "src": "232:31:0"
+              }
+            ],
+            "id": 11,
+            "name": "VariableDeclaration",
+            "src": "232:44:0"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "Certificar"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "_from",
+                      "scope": 19,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 12,
+                        "name": "ElementaryTypeName",
+                        "src": "302:7:0"
+                      }
+                    ],
+                    "id": 13,
+                    "name": "VariableDeclaration",
+                    "src": "302:21:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "_to",
+                      "scope": 19,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 14,
+                        "name": "ElementaryTypeName",
+                        "src": "325:7:0"
+                      }
+                    ],
+                    "id": 15,
+                    "name": "VariableDeclaration",
+                    "src": "325:19:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "_certificado",
+                      "scope": 19,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "struct Certidigital.Certificado",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Certificado",
+                          "referencedDeclaration": 7,
+                          "type": "struct Certidigital.Certificado"
+                        },
+                        "id": 16,
+                        "name": "UserDefinedTypeName",
+                        "src": "346:11:0"
+                      }
+                    ],
+                    "id": 17,
+                    "name": "VariableDeclaration",
+                    "src": "346:24:0"
+                  }
+                ],
+                "id": 18,
+                "name": "ParameterList",
+                "src": "301:70:0"
+              }
+            ],
+            "id": 19,
+            "name": "EventDefinition",
+            "src": "285:87:0"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "crearCertificado",
+              "scope": 61,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "receptor",
+                      "scope": 48,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 20,
+                        "name": "ElementaryTypeName",
+                        "src": "406:7:0"
+                      }
+                    ],
+                    "id": 21,
+                    "name": "VariableDeclaration",
+                    "src": "406:16:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "tituloCertificado",
+                      "scope": 48,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 22,
+                        "name": "ElementaryTypeName",
+                        "src": "424:6:0"
+                      }
+                    ],
+                    "id": 23,
+                    "name": "VariableDeclaration",
+                    "src": "424:31:0"
+                  }
+                ],
+                "id": 24,
+                "name": "ParameterList",
+                "src": "405:51:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 25,
+                "name": "ParameterList",
+                "src": "464:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        27
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "certificado",
+                          "scope": 47,
+                          "stateVariable": false,
+                          "storageLocation": "memory",
+                          "type": "struct Certidigital.Certificado",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "Certificado",
+                              "referencedDeclaration": 7,
+                              "type": "struct Certidigital.Certificado"
+                            },
+                            "id": 26,
+                            "name": "UserDefinedTypeName",
+                            "src": "475:11:0"
+                          }
+                        ],
+                        "id": 27,
+                        "name": "VariableDeclaration",
+                        "src": "475:30:0"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": true,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "struct Certidigital.Certificado memory",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                },
+                                {
+                                  "typeIdentifier": "t_string_memory_ptr",
+                                  "typeString": "string memory"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 7,
+                              "type": "type(struct Certidigital.Certificado storage pointer)",
+                              "value": "Certificado"
+                            },
+                            "id": 28,
+                            "name": "Identifier",
+                            "src": "508:11:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 109,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 29,
+                                "name": "Identifier",
+                                "src": "520:3:0"
+                              }
+                            ],
+                            "id": 30,
+                            "name": "MemberAccess",
+                            "src": "520:10:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 23,
+                              "type": "string memory",
+                              "value": "tituloCertificado"
+                            },
+                            "id": 31,
+                            "name": "Identifier",
+                            "src": "532:17:0"
+                          }
+                        ],
+                        "id": 32,
+                        "name": "FunctionCall",
+                        "src": "508:42:0"
+                      }
+                    ],
+                    "id": 33,
+                    "name": "VariableDeclarationStatement",
+                    "src": "475:75:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "struct Certidigital.Certificado storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "struct Certidigital.Certificado storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 11,
+                                  "type": "mapping(address => struct Certidigital.Certificado storage ref)",
+                                  "value": "certificados"
+                                },
+                                "id": 34,
+                                "name": "Identifier",
+                                "src": "561:12:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 21,
+                                  "type": "address",
+                                  "value": "receptor"
+                                },
+                                "id": 35,
+                                "name": "Identifier",
+                                "src": "574:8:0"
+                              }
+                            ],
+                            "id": 36,
+                            "name": "IndexAccess",
+                            "src": "561:22:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 27,
+                              "type": "struct Certidigital.Certificado memory",
+                              "value": "certificado"
+                            },
+                            "id": 37,
+                            "name": "Identifier",
+                            "src": "586:11:0"
+                          }
+                        ],
+                        "id": 38,
+                        "name": "Assignment",
+                        "src": "561:36:0"
+                      }
+                    ],
+                    "id": 39,
+                    "name": "ExpressionStatement",
+                    "src": "561:36:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_struct$_Certificado_$7_memory_ptr",
+                                  "typeString": "struct Certidigital.Certificado memory"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 19,
+                              "type": "function (address,address,struct Certidigital.Certificado memory)",
+                              "value": "Certificar"
+                            },
+                            "id": 40,
+                            "name": "Identifier",
+                            "src": "613:10:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 109,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 41,
+                                "name": "Identifier",
+                                "src": "624:3:0"
+                              }
+                            ],
+                            "id": 42,
+                            "name": "MemberAccess",
+                            "src": "624:10:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 21,
+                              "type": "address",
+                              "value": "receptor"
+                            },
+                            "id": 43,
+                            "name": "Identifier",
+                            "src": "636:8:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 27,
+                              "type": "struct Certidigital.Certificado memory",
+                              "value": "certificado"
+                            },
+                            "id": 44,
+                            "name": "Identifier",
+                            "src": "646:11:0"
+                          }
+                        ],
+                        "id": 45,
+                        "name": "FunctionCall",
+                        "src": "613:45:0"
+                      }
+                    ],
+                    "id": 46,
+                    "name": "EmitStatement",
+                    "src": "608:50:0"
+                  }
+                ],
+                "id": 47,
+                "name": "Block",
+                "src": "464:202:0"
+              }
+            ],
+            "id": 48,
+            "name": "FunctionDefinition",
+            "src": "380:286:0"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getCertificado",
+              "scope": 61,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "direccion",
+                      "scope": 60,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 49,
+                        "name": "ElementaryTypeName",
+                        "src": "698:7:0"
+                      }
+                    ],
+                    "id": 50,
+                    "name": "VariableDeclaration",
+                    "src": "698:17:0"
+                  }
+                ],
+                "id": 51,
+                "name": "ParameterList",
+                "src": "697:19:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 60,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct Certidigital.Certificado",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "Certificado",
+                          "referencedDeclaration": 7,
+                          "type": "struct Certidigital.Certificado"
+                        },
+                        "id": 52,
+                        "name": "UserDefinedTypeName",
+                        "src": "738:11:0"
+                      }
+                    ],
+                    "id": 53,
+                    "name": "VariableDeclaration",
+                    "src": "738:18:0"
+                  }
+                ],
+                "id": 54,
+                "name": "ParameterList",
+                "src": "737:20:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 54
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "struct Certidigital.Certificado storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 11,
+                              "type": "mapping(address => struct Certidigital.Certificado storage ref)",
+                              "value": "certificados"
+                            },
+                            "id": 55,
+                            "name": "Identifier",
+                            "src": "775:12:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 50,
+                              "type": "address",
+                              "value": "direccion"
+                            },
+                            "id": 56,
+                            "name": "Identifier",
+                            "src": "788:9:0"
+                          }
+                        ],
+                        "id": 57,
+                        "name": "IndexAccess",
+                        "src": "775:23:0"
+                      }
+                    ],
+                    "id": 58,
+                    "name": "Return",
+                    "src": "768:30:0"
+                  }
+                ],
+                "id": 59,
+                "name": "Block",
+                "src": "757:49:0"
+              }
+            ],
+            "id": 60,
+            "name": "FunctionDefinition",
+            "src": "674:132:0"
+          }
+        ],
+        "id": 61,
+        "name": "ContractDefinition",
+        "src": "106:705:0"
+      }
+    ],
+    "id": 62,
+    "name": "SourceUnit",
+    "src": "33:780:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2020-12-27T21:44:40.798Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
