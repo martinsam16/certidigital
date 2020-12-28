@@ -8,8 +8,8 @@ contract Certidigital {
     struct Certificado {
         address emisor;
         address receptor;
-        string tituloCertificado;
-        string fecha;
+        string hashFile;
+        string fechaEmision;
         string fechaExpiracion;
     }
 
@@ -18,12 +18,16 @@ contract Certidigital {
 
     event Certificar(address indexed _from, address indexed _to, Certificado _certificado);
 
-    function crearCertificado(address receptor, string memory idCertificado, string memory tituloCertificado, string memory fecha, string memory fechaExpiracion) public
-    returns (Certificado memory) {
-        Certificado memory certificado = Certificado(msg.sender, receptor, tituloCertificado, fecha, fechaExpiracion);
+    function crearCertificado(address receptor,
+        string memory idCertificado,
+        string memory hashFile,
+        string memory fechaEmision,
+        string memory fechaExpiracion)
+    public payable returns (bool) {
+        Certificado memory certificado = Certificado(msg.sender, receptor, hashFile, fechaEmision, fechaExpiracion);
         certificados[idCertificado] = certificado;
         emit Certificar(msg.sender, receptor, certificado);
-        return certificado;
+        return true;
     }
 
     function eliminarCertificado(string memory idCertificado) public {

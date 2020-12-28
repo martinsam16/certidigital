@@ -5,6 +5,8 @@ https://www.trufflesuite.com/docs/truffle/getting-started/using-truffle-develop-
 https://www.trufflesuite.com/docs/truffle/getting-started/interacting-with-your-contracts
 truffle console --network net
     let instance = await Certidigital.deployed()
+    let accounts = await web3.eth.getAccounts()
+    instance.crearCertificado(accounts[0],'IDCERT','hashfile','12/12/2020','25/12/2021')
 
 :8545
 truffle develop
