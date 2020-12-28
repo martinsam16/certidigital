@@ -1,0 +1,8 @@
+{
+  "name": "LearningSolidity",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.2.1"
+  }
+}
