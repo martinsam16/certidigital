@@ -1,10 +1,13 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Web3Service} from './service/web3.service';
+import {DatePipe} from '@angular/common';
+import sha256 from 'crypto-js/sha256';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers:[DatePipe]
 })
 export class AppComponent implements OnInit {
 
@@ -16,8 +19,8 @@ export class AppComponent implements OnInit {
 
   receptor: string;
   hashFile: string;
-  fechaEmision: string;
-  fechaExpiracion: string;
+  fechaEmision: Date;
+  fechaExpiracion: Date;
 
   clear() {
     this.receptor = null;
@@ -26,7 +29,7 @@ export class AppComponent implements OnInit {
     this.fechaExpiracion = null;
   }
 
-  constructor(private web3: Web3Service, private cd: ChangeDetectorRef) {
+  constructor(private web3: Web3Service, private cd: ChangeDetectorRef, private datePipe: DatePipe) {
 
     this.web3.checkAndInstantiateWeb3()
       .then((checkConn: any) => {
@@ -72,7 +75,10 @@ export class AppComponent implements OnInit {
   }
 
   certificar(): void {
-    this.addCertificate(this.receptor, this.hashFile, this.fechaEmision, this.fechaExpiracion);
+    this.addCertificate(this.receptor,
+      this.hashFile,
+      this.formatearFecha(this.fechaEmision),
+      this.formatearFecha(this.fechaExpiracion));
   }
 
   private addCertificate(receptor, hashFile, fechaEmision, fechaExpiracion) {
@@ -84,6 +90,22 @@ export class AppComponent implements OnInit {
         this.totalCertificados.push(receipt.events.Certificar.returnValues._certificado);
         this.show = false;
       });
+  }
+
+  processFile(imageInput: any): void {
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      if (event.target.readyState === FileReader.DONE) {
+        const hash = sha256(reader.result);
+        this.hashFile = hash.toString();
+        console.log(hash.toString());
+      }
+    });
+    reader.readAsDataURL(imageInput.files[0]);
+  }
+
+  formatearFecha(fecha: Date) {
+    return this.datePipe.transform(fecha, 'dd/MM/yyyy');
   }
 
 }

@@ -24,21 +24,30 @@
       <h3>Agregar Certificado</h3>
 
       <div class="example-form margin-auto">
+        <input #imagenInput
+               type="file"
+               placeholder="hashFile"
+               accept="application/pdf"
+               (change)="processFile(imagenInput)">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>hashFile</mat-label>
+          <input type="text" readonly matInput placeholder="hashFile" [(ngModel)]="hashFile">
+        </mat-form-field>
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label>Receptor Address</mat-label>
           <input type="text" matInput placeholder="Receptor Address" [(ngModel)]="receptor">
         </mat-form-field>
         <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>hashFile</mat-label>
-          <input type="text" matInput placeholder="hashFile" [(ngModel)]="hashFile">
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="example-full-width">
           <mat-label>fechaEmision</mat-label>
-          <input type="text" matInput placeholder="fechaEmision" [(ngModel)]="fechaEmision">
+          <input matInput [matDatepicker]="picker" [(ngModel)]="fechaEmision">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label>fechaExpiracion</mat-label>
-          <input type="text" matInput placeholder="fechaExpiracion" [(ngModel)]="fechaExpiracion">
+          <input matInput [matDatepicker]="picker2" [(ngModel)]="fechaExpiracion">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
 
         <button class="example-full-width" mat-raised-button color="primary"
