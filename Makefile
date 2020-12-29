@@ -1,6 +1,6 @@
 
-build:
-	truffle build
+compile:
+	truffle compile
 
 deploy:
 	truffle deploy --network development

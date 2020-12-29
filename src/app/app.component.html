@@ -11,23 +11,22 @@
 
 
 <mat-tab-group mat-stretch-tabs>
-  <mat-tab>
-
+  <mat-tab *ngIf="soyOwner">
     <ng-template mat-tab-label>
       <mat-icon class="example-tab-icon">add</mat-icon>
-      Agregar Certificado
     </ng-template>
-
     <div class="text-center">
-
       <h3>Agregar Certificado</h3>
-
       <div class="example-form margin-auto">
         <input #pdfInputEncrypt
                type="file"
                placeholder="hashFile"
                accept="application/pdf"
                (change)="processFile(pdfInputEncrypt)">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Título</mat-label>
+          <input type="text" matInput placeholder="Título" [(ngModel)]="titulo">
+        </mat-form-field>
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label>Address Receptor</mat-label>
           <input type="text" matInput placeholder="Receptor Address" [(ngModel)]="receptor">
@@ -44,42 +43,33 @@
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
-
         <button class="example-full-width" mat-raised-button color="primary"
                 (click)="certificar()">Agregar Certificado
         </button>
-
       </div>
-
     </div>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon class="example-tab-icon">list</mat-icon>
-      Certificados
+      <mat-icon class="example-tab-icon">search</mat-icon>
     </ng-template>
-    <div class="example-form margin-auto">
-      <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label>Buscar</mat-label>
-        <input type="text" matInput placeholder="Buscar" [(ngModel)]="searchText">
-        <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      <input #pdfInputSearch
-             type="file"
-             placeholder="hashFile"
-             accept="application/pdf"
-             (change)="searchFile(pdfInputSearch)">
+    <div class="text-center">
+      <h3>Verificar Certificado</h3>
+      <div class="example-form margin-auto">
+        <input #pdfInputSearch
+               type="file"
+               accept="application/pdf"
+               (change)="searchFile(pdfInputSearch)">
+      </div>
     </div>
+
     <mat-list>
-      <h2 mat-subheader>Certificados</h2>
-      <mat-list-item *ngFor="let certificado of totalCertificados | filter:searchText">
+      <h2 mat-subheader>Verificados</h2>
+      <mat-list-item *ngFor="let certificado of totalCertificados">
         <img matListAvatar src="../assets/ethereum.png" alt="icon">
-        <h4 mat-line>ID: {{certificado.id}}</h4>
         <h4 mat-line>Emisor: {{certificado.emisor}}</h4>
+        <h4 mat-line>Título: {{certificado.titulo}}</h4>
         <h4 mat-line>Receptor: {{certificado.receptor}}</h4>
-        <h4 mat-line>pdf: {{certificado.hashFile}}</h4>
         <h4 mat-line>Emisión: {{certificado.fechaEmision}}</h4>
         <h4 mat-line>Expiración: {{certificado.fechaExpiracion}}</h4>
         <mat-divider></mat-divider>

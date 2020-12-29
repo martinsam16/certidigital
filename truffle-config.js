@@ -1,5 +1,4 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-const path = require('path');
 
 const privateKeys = [
     "ae6ae8e5ccbfb04590405997ee2d52d2b330726137b875053c36d94e974d162f",
@@ -7,7 +6,7 @@ const privateKeys = [
 ];
 
 module.exports = {
-    contracts_build_directory: path.join(__dirname, '/src/app/contracts/'),
+    contracts_build_directory: './src/app/contracts/',
     networks: {
         development: {
             host: "127.0.0.1",     // Localhost (default: none)

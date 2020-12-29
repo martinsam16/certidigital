@@ -14,8 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
-import {MatNativeDateModule} from '@angular/material';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {MatNativeDateModule, MatSnackBarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,7 +35,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MatButtonModule,
     MatListModule,
     MatNativeDateModule,
-    Ng2SearchPipeModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

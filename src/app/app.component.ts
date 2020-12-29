@@ -2,6 +2,9 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Web3Service} from './service/web3.service';
 import {DatePipe} from '@angular/common';
 import sha256 from 'crypto-js/sha256';
+import {MatSnackBar} from '@angular/material';
+
+declare let window: any;
 
 @Component({
   selector: 'app-root',
@@ -11,17 +14,18 @@ import sha256 from 'crypto-js/sha256';
 })
 export class AppComponent implements OnInit {
 
-  accountNumber: any;
+  myAddress: any;
   show = true;
+  soyOwner = false;
   totalCertificados = [];
   private certidigital: any;
   balance: any;
 
   receptor: string;
   hashFile: string;
+  titulo: string;
   fechaEmision: Date;
   fechaExpiracion: Date;
-  searchText;
 
   clear() {
     this.receptor = null;
@@ -32,37 +36,26 @@ export class AppComponent implements OnInit {
 
   constructor(private web3: Web3Service,
               private cd: ChangeDetectorRef,
-              private datePipe: DatePipe) {
+              private datePipe: DatePipe,
+              private snackBar: MatSnackBar) {
 
     this.web3.checkAndInstantiateWeb3()
       .then((checkConn: any) => {
         if (checkConn === 'connected') {
           this.web3.loadBlockChainData()
             .then((accountData: any) => {
-              this.accountNumber = accountData[0];
-              this.web3.getEtherBalance(this.accountNumber)
+              this.myAddress = accountData[0];
+              this.web3.getEtherBalance(this.myAddress)
                 .then((data: any) => {
                   this.balance = Number(data).toFixed(2);
-                  console.log(data);
                 });
               this.web3.getContract()
                 .then((contractRes: any) => {
                   if (contractRes) {
                     this.certidigital = contractRes;
-                    this.certidigital.methods.certificadoCount()
-                      .call()
-                      .then(value => {
-                        for (let i = 1; i <= value; i++) {
-                          this.certidigital.methods.certificados(i)
-                            .call()
-                            .then(certificados => {
-                              this.show = false;
-                              this.totalCertificados.push(certificados);
-                              this.cd.detectChanges();
-                            });
-                        }
-                        this.show = false;
-                      });
+                    this.verificarOwner();
+                    this.changeAccount();
+                    this.show = false;
                   }
                 });
             }, err => {
@@ -77,21 +70,53 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
+  public changeAccount() {
+    window.ethereum.on('accountsChanged', (accounts) => {
+      console.log('accountsChanged');
+      this.myAddress = accounts[0];
+      window.location.reload();
+    });
+  }
+
   certificar(): void {
     this.addCertificate(this.receptor,
+      this.titulo,
       this.hashFile,
       this.formatearFecha(this.fechaEmision),
       this.formatearFecha(this.fechaExpiracion));
   }
 
-  private addCertificate(receptor, hashFile, fechaEmision, fechaExpiracion): void {
+  private addCertificate(receptor, titulo, hashFile, fechaEmision, fechaExpiracion): void {
     this.show = true;
-    this.certidigital.methods.crearCertificado(this.web3.toChecksumAddress(receptor), hashFile, fechaEmision, fechaExpiracion)
-      .send({from: this.accountNumber})
+    this.certidigital.methods.crearCertificado(this.web3.toChecksumAddress(receptor), titulo, hashFile, fechaEmision, fechaExpiracion)
+      .send({from: this.myAddress})
       .once('receipt', (receipt) => {
         this.clear();
-        this.totalCertificados.push(receipt.events.Certificar.returnValues._certificado);
         this.show = false;
+        console.log('receipt', receipt);
+      });
+  }
+
+  private obtenerCertificado(hashFile: string): void {
+    this.certidigital.methods.obtenerCertificado(hashFile)
+      .call()
+      .then(encontrado => {
+        if (encontrado.emisor !== '0x0000000000000000000000000000000000000000') {
+          this.totalCertificados.push(encontrado);
+        } else {
+          this.openSnackBar('El certificado es inválido');
+        }
+      });
+  }
+
+
+  private verificarOwner(): void {
+    this.certidigital.methods.getOwner()
+      .call()
+      .then(addresOwner => {
+        if (this.myAddress === addresOwner) {
+          this.soyOwner = true;
+        }
       });
   }
 
@@ -114,7 +139,7 @@ export class AppComponent implements OnInit {
     reader.addEventListener('load', (event: any) => {
       if (event.target.readyState === FileReader.DONE) {
         const hash = sha256(reader.result);
-        this.searchText = hash.toString();
+        this.obtenerCertificado(hash.toString());
         this.show = false;
       }
     });
@@ -123,5 +148,11 @@ export class AppComponent implements OnInit {
 
   formatearFecha(fecha: Date) {
     return this.datePipe.transform(fecha, 'dd/MM/yyyy');
+  }
+
+  private openSnackBar(message: string) {
+    this.snackBar.open(message, 'x', {
+      duration: 5000,
+    });
   }
 }

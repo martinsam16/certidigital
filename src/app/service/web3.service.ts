@@ -22,17 +22,17 @@ export class Web3Service {
         this.messageResult = 'connected';
         window.web3 = new Web3(window.ethereum);
         window.ethereum.enable();
-        resolve(this.messageResult);
       } else if (window.web3) {
         this.messageResult = 'connected';
         window.web3 = new Web3(window.web3.currentProvider);
-        resolve(this.messageResult);
       } else {
         this.messageResult = 'No Ethereum browser detected. you should consider trying MetaMask';
         reject(this.messageResult);
       }
+      resolve(this.messageResult);
     });
   }
+
 
   public loadBlockChainData(): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -65,7 +65,7 @@ export class Web3Service {
   public getEtherBalance(account) {
     return new Promise((resolve) => {
       const web3 = window.web3;
-      const balance = web3.eth.getBalance(account)
+      web3.eth.getBalance(account)
         .then(ba => {
           resolve(web3.utils.fromWei(ba, 'Ether'));
         });
