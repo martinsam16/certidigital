@@ -7,7 +7,7 @@ import sha256 from 'crypto-js/sha256';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[DatePipe]
+  providers: [DatePipe]
 })
 export class AppComponent implements OnInit {
 
@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   hashFile: string;
   fechaEmision: Date;
   fechaExpiracion: Date;
+  searchText;
 
   clear() {
     this.receptor = null;
@@ -29,7 +30,9 @@ export class AppComponent implements OnInit {
     this.fechaExpiracion = null;
   }
 
-  constructor(private web3: Web3Service, private cd: ChangeDetectorRef, private datePipe: DatePipe) {
+  constructor(private web3: Web3Service,
+              private cd: ChangeDetectorRef,
+              private datePipe: DatePipe) {
 
     this.web3.checkAndInstantiateWeb3()
       .then((checkConn: any) => {
@@ -81,7 +84,7 @@ export class AppComponent implements OnInit {
       this.formatearFecha(this.fechaExpiracion));
   }
 
-  private addCertificate(receptor, hashFile, fechaEmision, fechaExpiracion) {
+  private addCertificate(receptor, hashFile, fechaEmision, fechaExpiracion): void {
     this.show = true;
     this.certidigital.methods.crearCertificado(this.web3.toChecksumAddress(receptor), hashFile, fechaEmision, fechaExpiracion)
       .send({from: this.accountNumber})
@@ -92,7 +95,8 @@ export class AppComponent implements OnInit {
       });
   }
 
-  processFile(imageInput: any): void {
+
+  processFile(pdf: any): void {
     const reader = new FileReader();
     reader.addEventListener('load', (event: any) => {
       if (event.target.readyState === FileReader.DONE) {
@@ -101,11 +105,23 @@ export class AppComponent implements OnInit {
         console.log(hash.toString());
       }
     });
-    reader.readAsDataURL(imageInput.files[0]);
+    reader.readAsDataURL(pdf.files[0]);
+  }
+
+  searchFile(pdf: any): void {
+    this.show = true;
+    const reader = new FileReader();
+    reader.addEventListener('load', (event: any) => {
+      if (event.target.readyState === FileReader.DONE) {
+        const hash = sha256(reader.result);
+        this.searchText = hash.toString();
+        this.show = false;
+      }
+    });
+    reader.readAsDataURL(pdf.files[0]);
   }
 
   formatearFecha(fecha: Date) {
     return this.datePipe.transform(fecha, 'dd/MM/yyyy');
   }
-
 }

@@ -15,6 +15,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatNativeDateModule} from '@angular/material';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatNativeDateModule} from '@angular/material';
     MatDatepickerModule,
     MatButtonModule,
     MatListModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    Ng2SearchPipeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

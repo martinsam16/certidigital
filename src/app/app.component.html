@@ -10,7 +10,6 @@
 </mat-toolbar>
 
 
-
 <mat-tab-group mat-stretch-tabs>
   <mat-tab>
 
@@ -24,27 +23,23 @@
       <h3>Agregar Certificado</h3>
 
       <div class="example-form margin-auto">
-        <input #imagenInput
+        <input #pdfInputEncrypt
                type="file"
                placeholder="hashFile"
                accept="application/pdf"
-               (change)="processFile(imagenInput)">
+               (change)="processFile(pdfInputEncrypt)">
         <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>hashFile</mat-label>
-          <input type="text" readonly matInput placeholder="hashFile" [(ngModel)]="hashFile">
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>Receptor Address</mat-label>
+          <mat-label>Address Receptor</mat-label>
           <input type="text" matInput placeholder="Receptor Address" [(ngModel)]="receptor">
         </mat-form-field>
         <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>fechaEmision</mat-label>
+          <mat-label>Fecha Emisión</mat-label>
           <input matInput [matDatepicker]="picker" [(ngModel)]="fechaEmision">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <mat-form-field appearance="outline" class="example-full-width">
-          <mat-label>fechaExpiracion</mat-label>
+          <mat-label>Fecha Expiración</mat-label>
           <input matInput [matDatepicker]="picker2" [(ngModel)]="fechaExpiracion">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
@@ -63,10 +58,23 @@
       <mat-icon class="example-tab-icon">list</mat-icon>
       Certificados
     </ng-template>
+    <div class="example-form margin-auto">
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Buscar</mat-label>
+        <input type="text" matInput placeholder="Buscar" [(ngModel)]="searchText">
+        <button mat-button *ngIf="searchText" matSuffix mat-icon-button aria-label="Clear" (click)="searchText=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <input #pdfInputSearch
+             type="file"
+             placeholder="hashFile"
+             accept="application/pdf"
+             (change)="searchFile(pdfInputSearch)">
+    </div>
     <mat-list>
-      <h2 mat-subheader>Lista Certificados</h2>
-      <mat-list-item *ngFor="let certificado of totalCertificados">
-        <!--<mat-icon mat-list-icon>folder</mat-icon>-->
+      <h2 mat-subheader>Certificados</h2>
+      <mat-list-item *ngFor="let certificado of totalCertificados | filter:searchText">
         <img matListAvatar src="../assets/ethereum.png" alt="icon">
         <h4 mat-line>ID: {{certificado.id}}</h4>
         <h4 mat-line>Emisor: {{certificado.emisor}}</h4>

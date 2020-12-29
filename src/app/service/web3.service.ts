@@ -28,7 +28,7 @@ export class Web3Service {
         window.web3 = new Web3(window.web3.currentProvider);
         resolve(this.messageResult);
       } else {
-        this.messageResult = 'No Erthereum browser detected. you should consider trying MetaMask';
+        this.messageResult = 'No Ethereum browser detected. you should consider trying MetaMask';
         reject(this.messageResult);
       }
     });
