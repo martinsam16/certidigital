@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {CertidigitalComponent} from "./certidigital/certidigital.component";
 
-const routes: Routes = [
-  {path: 'certidigital', component: CertidigitalComponent}
-];
+
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

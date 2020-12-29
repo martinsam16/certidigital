@@ -1,1 +1,75 @@
+<div class="loading-indicator" *ngIf="show == true">
+  <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+</div>
+
+
+<mat-toolbar color="primary" style="min-height: 55px !important; height: 55px !important;" class="mat-elevation-z6">
+  <span class="font-14">Certidigital DApp</span>
+  <span class="example-spacer"></span>
+  <span class="font-14">Balance : {{balance}} ETH</span>
+</mat-toolbar>
+
+
+
+<mat-tab-group mat-stretch-tabs>
+  <mat-tab>
+
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">add</mat-icon>
+      Agregar Certificado
+    </ng-template>
+
+    <div class="text-center">
+
+      <h3>Agregar Certificado</h3>
+
+      <div class="example-form margin-auto">
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>Receptor Address</mat-label>
+          <input type="text" matInput placeholder="Receptor Address" [(ngModel)]="receptor">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>hashFile</mat-label>
+          <input type="text" matInput placeholder="hashFile" [(ngModel)]="hashFile">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>fechaEmision</mat-label>
+          <input type="text" matInput placeholder="fechaEmision" [(ngModel)]="fechaEmision">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>fechaExpiracion</mat-label>
+          <input type="text" matInput placeholder="fechaExpiracion" [(ngModel)]="fechaExpiracion">
+        </mat-form-field>
+
+        <button class="example-full-width" mat-raised-button color="primary"
+                (click)="certificar()">Agregar Certificado
+        </button>
+
+      </div>
+
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">list</mat-icon>
+      Certificados
+    </ng-template>
+    <mat-list>
+      <h2 mat-subheader>Lista Certificados</h2>
+      <mat-list-item *ngFor="let certificado of totalCertificados">
+        <!--<mat-icon mat-list-icon>folder</mat-icon>-->
+        <img matListAvatar src="../assets/ethereum.png" alt="icon">
+        <h4 mat-line>ID: {{certificado.id}}</h4>
+        <h4 mat-line>Emisor: {{certificado.emisor}}</h4>
+        <h4 mat-line>Receptor: {{certificado.receptor}}</h4>
+        <h4 mat-line>pdf: {{certificado.hashFile}}</h4>
+        <h4 mat-line>Emisión: {{certificado.fechaEmision}}</h4>
+        <h4 mat-line>Expiración: {{certificado.fechaExpiracion}}</h4>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-list>
+  </mat-tab>
+</mat-tab-group>
+
+
 <router-outlet></router-outlet>
