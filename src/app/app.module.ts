@@ -14,7 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
-import {MatNativeDateModule, MatSnackBarModule} from '@angular/material';
+import {MatCardModule, MatGridListModule, MatNativeDateModule, MatSnackBarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,9 @@ import {MatNativeDateModule, MatSnackBarModule} from '@angular/material';
     MatButtonModule,
     MatListModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

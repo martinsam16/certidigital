@@ -20,6 +20,28 @@
   z-index: 2;
 }
 
+.mat-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card-header {
+  flex-shrink: 0;
+}
+
+.mat-card-content {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.example-card {
+  max-width: 470px;
+}
+
+.example-header-image {
+  background-image: url('../assets/ethereum.png');
+  background-size: cover;
+}
 
 code {
   background: hsl(220, 80%, 90%);

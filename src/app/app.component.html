@@ -10,7 +10,7 @@
 </mat-toolbar>
 
 
-<mat-tab-group mat-stretch-tabs>
+<mat-tab-group dynamicHeight mat-align-tabs="center">
   <mat-tab *ngIf="soyOwner">
     <ng-template mat-tab-label>
       <mat-icon class="example-tab-icon">add</mat-icon>
@@ -22,7 +22,7 @@
                type="file"
                placeholder="hashFile"
                accept="application/pdf"
-               (change)="processFile(pdfInputEncrypt)">
+               (change)="encriptarCertificado(pdfInputEncrypt)">
         <mat-form-field appearance="outline" class="example-full-width">
           <mat-label>Título</mat-label>
           <input type="text" matInput placeholder="Título" [(ngModel)]="titulo">
@@ -62,19 +62,29 @@
                (change)="searchFile(pdfInputSearch)">
       </div>
     </div>
+    <mat-grid-list cols="2" gutterSize="20px">
+      <mat-grid-tile *ngFor="let certificado of totalCertificados">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{certificado.titulo}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="https://i.pinimg.com/originals/07/af/ff/07afffb321f3a2977becbbf3cda0b7a2.png"
+               alt="Photo of a Certificate">
+          <mat-card-content>
+            <h5>Emisor</h5>
+            <p>{{certificado.emisor}}</p>
+            <h5>Receptor</h5>
+            <p>{{certificado.receptor}}</p>
+            <h5>Emisión</h5>
+            <p>{{certificado.fechaEmision}}</p>
+            <h5>Expiración</h5>
+            <p>{{certificado.fechaExpiracion}}</p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
 
-    <mat-list>
-      <h2 mat-subheader>Verificados</h2>
-      <mat-list-item *ngFor="let certificado of totalCertificados">
-        <img matListAvatar src="../assets/ethereum.png" alt="icon">
-        <h4 mat-line>Emisor: {{certificado.emisor}}</h4>
-        <h4 mat-line>Título: {{certificado.titulo}}</h4>
-        <h4 mat-line>Receptor: {{certificado.receptor}}</h4>
-        <h4 mat-line>Emisión: {{certificado.fechaEmision}}</h4>
-        <h4 mat-line>Expiración: {{certificado.fechaExpiracion}}</h4>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-    </mat-list>
   </mat-tab>
 </mat-tab-group>
 

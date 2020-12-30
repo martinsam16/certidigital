@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   fechaExpiracion: Date;
 
   clear() {
+    this.titulo = null;
     this.receptor = null;
     this.hashFile = null;
     this.fechaEmision = null;
@@ -102,6 +103,7 @@ export class AppComponent implements OnInit {
       .call()
       .then(encontrado => {
         if (encontrado.emisor !== '0x0000000000000000000000000000000000000000') {
+          this.openSnackBar('El certificado es válido');
           this.totalCertificados.push(encontrado);
         } else {
           this.openSnackBar('El certificado es inválido');
@@ -121,29 +123,38 @@ export class AppComponent implements OnInit {
   }
 
 
-  processFile(pdf: any): void {
-    const reader = new FileReader();
-    reader.addEventListener('load', (event: any) => {
-      if (event.target.readyState === FileReader.DONE) {
-        const hash = sha256(reader.result);
-        this.hashFile = hash.toString();
-        console.log(hash.toString());
-      }
-    });
-    reader.readAsDataURL(pdf.files[0]);
+  encriptarCertificado(event: any): void {
+    const pdf = event.files[0];
+    if (pdf) {
+      this.show = true;
+      const reader = new FileReader();
+      reader.addEventListener('load', (e: any) => {
+        if (e.target.readyState === FileReader.DONE) {
+          const hash = sha256(reader.result);
+          this.hashFile = hash.toString();
+          this.show = false;
+          console.log(hash.toString());
+        }
+      });
+      reader.readAsDataURL(pdf);
+    }
   }
 
-  searchFile(pdf: any): void {
-    this.show = true;
-    const reader = new FileReader();
-    reader.addEventListener('load', (event: any) => {
-      if (event.target.readyState === FileReader.DONE) {
-        const hash = sha256(reader.result);
-        this.obtenerCertificado(hash.toString());
-        this.show = false;
-      }
-    });
-    reader.readAsDataURL(pdf.files[0]);
+  searchFile(event: any): void {
+    const pdf = event.files[0];
+    if (pdf) {
+      this.show = true;
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        if (e.target.readyState === FileReader.DONE) {
+          const hash = sha256(reader.result);
+          this.obtenerCertificado(hash.toString());
+          this.show = false;
+        }
+      };
+      reader.readAsDataURL(pdf);
+    }
+
   }
 
   formatearFecha(fecha: Date) {
