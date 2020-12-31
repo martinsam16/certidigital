@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   receptor: string;
   hashFile: string;
   titulo: string;
+  urlCover: string;
   fechaEmision: Date;
   fechaExpiracion: Date;
 
@@ -84,12 +85,18 @@ export class AppComponent implements OnInit {
       this.titulo,
       this.hashFile,
       this.formatearFecha(this.fechaEmision),
-      this.formatearFecha(this.fechaExpiracion));
+      this.formatearFecha(this.fechaExpiracion),
+      this.urlCover);
   }
 
-  private addCertificate(receptor, titulo, hashFile, fechaEmision, fechaExpiracion): void {
+  private addCertificate(receptor, titulo, hashFile, fechaEmision, fechaExpiracion, urlCover): void {
     this.show = true;
-    this.certidigital.methods.crearCertificado(this.web3.toChecksumAddress(receptor), titulo, hashFile, fechaEmision, fechaExpiracion)
+    this.certidigital.methods.crearCertificado(this.web3.toChecksumAddress(receptor),
+      titulo,
+      hashFile,
+      fechaEmision,
+      fechaExpiracion,
+      urlCover)
       .send({from: this.myAddress})
       .once('receipt', (receipt) => {
         this.clear();

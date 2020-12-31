@@ -10,6 +10,7 @@ contract Certidigital {
     address receptor;
     string fechaEmision;
     string fechaExpiracion;
+    string urlCover;
   }
 
   //hash pdf - certificado
@@ -34,10 +35,11 @@ contract Certidigital {
     string memory titulo,
     string memory hashFile,
     string memory fechaEmision,
-    string memory fechaExpiracion)
+    string memory fechaExpiracion,
+    string memory urlCover)
   public soloOwner returns (bool) {
     //Verificar si existe
-    Certificado memory certificado = Certificado(titulo, msg.sender, receptor, fechaEmision, fechaExpiracion);
+    Certificado memory certificado = Certificado(titulo, msg.sender, receptor, fechaEmision, fechaExpiracion, urlCover);
     certificados[hashFile] = certificado;
     emit Certificar(msg.sender, receptor, certificado);
     return true;

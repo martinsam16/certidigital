@@ -43,6 +43,10 @@
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+          <mat-label>URL Cover</mat-label>
+          <input type="text" matInput placeholder="URL Cover" [(ngModel)]="urlCover">
+        </mat-form-field>
         <button class="example-full-width" mat-raised-button color="primary"
                 (click)="certificar()">Agregar Certificado
         </button>
@@ -69,7 +73,7 @@
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{certificado.titulo}}</mat-card-title>
           </mat-card-header>
-          <img mat-card-image src="https://i.pinimg.com/originals/07/af/ff/07afffb321f3a2977becbbf3cda0b7a2.png"
+          <img mat-card-image src="{{certificado.urlCover}}"
                alt="Photo of a Certificate">
           <mat-card-content>
             <h5>Emisor</h5>
