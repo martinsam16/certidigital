@@ -1,7 +1,7 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const privateKeys = [
-  "0xae6ae8e5ccbfb04590405997ee2d52d2b330726137b875053c36d94e974d162f"
+  "0xae6ae8e5ccbfb04590405997ee2d52d2b330726137b875053c36d94e974d162f",
 ];
 
 module.exports = {
@@ -17,6 +17,10 @@ module.exports = {
         return new HDWalletProvider(privateKeys, "http://127.0.0.1:8545");
       },
       network_id: "*",
+    },
+    lacchainAcademy: {
+      provider: () => new HDWalletProvider(privateKeys, 'http://35.184.61.29:4545'),
+      network_id: "648539",
     },
     // Another network with more advanced options...
     // advanced: {

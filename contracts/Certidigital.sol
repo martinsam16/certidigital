@@ -29,8 +29,6 @@ contract Certidigital {
     owner = msg.sender;
   }
 
-
-
   function crearCertificado(address receptor,
     string memory titulo,
     string memory hashFile,
