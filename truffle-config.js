@@ -12,14 +12,10 @@ module.exports = {
       port: 7545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
     },
-    lacchain: {
-      provider: () => {
-        return new HDWalletProvider(privateKeys, "http://127.0.0.1:8545");
-      },
-      network_id: "*",
-    },
     lacchainAcademy: {
-      provider: () => new HDWalletProvider(privateKeys, 'http://35.184.61.29:4545'),
+      provider: () => {
+        return new HDWalletProvider(privateKeys, 'http://35.184.61.29:4545')
+      },
       network_id: "648539",
     },
     // Another network with more advanced options...

@@ -16,7 +16,7 @@ console:
 #truffle console --network development
 #    let instance = await Certidigital.deployed()
 #    let accounts = await web3.eth.getAccounts()
-#    instance.crearCertificado(accounts[0],'hashfile','12/12/2020','25/12/2021')
-#    instance.obtenerCertificado(1);
+#     instance.crearCertificado(accounts[0],'titulo','hashfile','12/12/2020','25/12/2021','url');
+#    instance.obtenerCertificado('hashfile');
 #:8545
 #truffle develop
