@@ -1,7 +1,8 @@
+// http://18.230.79.100:8080/?operacion=getAccount
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const privateKeys = [
-  "0xae6ae8e5ccbfb04590405997ee2d52d2b330726137b875053c36d94e974d162f",
+  "0x80994e960932e63b8355e3f683ecd2c18f7cfc33505cc303e173229a097f0123",
 ];
 
 module.exports = {
@@ -14,10 +15,20 @@ module.exports = {
     },
     lacchainAcademy: {
       provider: () => {
-        return new HDWalletProvider(privateKeys, 'http://35.184.61.29:4545')
+        return new HDWalletProvider(privateKeys, 'http://34.86.137.246:4545')
       },
       network_id: "648539",
     },
+    lacchain: {
+      provider: ()=> {
+        return new HDWalletProvider(privateKeys,"http://34.86.137.246:4545")
+      },
+      port: 4545,
+      gas: 9003605,
+      gasPrice: 0x0,
+      network_id: "*",
+    }
+
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
