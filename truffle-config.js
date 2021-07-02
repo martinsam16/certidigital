@@ -15,13 +15,16 @@ module.exports = {
     },
     lacchainAcademy: {
       provider: () => {
-        return new HDWalletProvider(privateKeys, 'http://34.86.137.246:4545')
+        return new HDWalletProvider(privateKeys, "https://writer.lacchain.net/")
       },
-      network_id: "648539",
+      port: 4545,
+      gas: 9003605,
+      gasPrice: 0x0,
+      network_id: "*",
     },
-    lacchain: {
-      provider: ()=> {
-        return new HDWalletProvider(privateKeys,"http://34.86.137.246:4545")
+    lacchainValleGrande: {
+      provider: () => {
+        return new HDWalletProvider(privateKeys, "http://34.86.137.246:4545")
       },
       port: 4545,
       gas: 9003605,
@@ -64,7 +67,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.1",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {
